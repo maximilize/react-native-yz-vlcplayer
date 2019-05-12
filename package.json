@@ -1,6 +1,6 @@
 {
   "name": "react-native-yz-vlcplayer",
-  "version": "1.1.1-beta7",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,10 +15,5 @@
     "mp4"
   ],
   "author": "yuanzhou.xu",
-  "email": "635043894@qq.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xuyuanzhou/react-native-yz-vlcplayer.git"
-  },
   "license": "MIT"
 }
