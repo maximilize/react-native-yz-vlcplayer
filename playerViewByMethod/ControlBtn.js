@@ -45,10 +45,13 @@ export default class ControlBtn extends Component {
 
   render() {
     let {
+      showControl,
       paused,
       muted,
       isFull,
       showSlider,
+      showFullScreen,
+      showReload,
       onPausedPress,
       onMutePress,
       onFullPress,
@@ -67,20 +70,21 @@ export default class ControlBtn extends Component {
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={() => {
-                  onPausedPress && onPausedPress(!paused);
-                }}
-                style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
-                <Icon name={paused ? 'play' : 'pause'} size={26} color="#fff" />
-              </TouchableOpacity>
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => {
                   onMutePress && onMutePress(!paused);
                 }}
                 style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name={muted ? 'volume-off' : 'volume-high'} size={24} color="#fff" />
               </TouchableOpacity>
-                <TouchableOpacity
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => {
+                  onPausedPress && onPausedPress(!paused);
+                }}
+                style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name={paused ? 'play' : 'pause'} size={26} color="#fff" />
+              </TouchableOpacity>
+              {showReload &&
+                (<TouchableOpacity
                   activeOpacity={0.8}
                   onPress={() => {
                   onReload && onReload();
@@ -88,6 +92,7 @@ export default class ControlBtn extends Component {
                   style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
                   <Icon name={'reload'} size={24} color="#fff"/>
                 </TouchableOpacity>
+              )}
               </View>
               {showSlider &&
                 totalTime > 0 && (
@@ -141,14 +146,16 @@ export default class ControlBtn extends Component {
                     </View>
                   </View>
                 )}
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => {
-                  onFullPress && onFullPress(!isFull);
-                }}
-                style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
-                <Icon name={isFull ? 'fullscreen-exit' : 'fullscreen'} size={26} color="#fff" />
-              </TouchableOpacity>
+                {(showFullScreen &&
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => {
+                      onFullPress && onFullPress(!isFull);
+                    }}
+                    style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon name={isFull ? 'fullscreen-exit' : 'fullscreen'} size={26} color="#fff" />
+                  </TouchableOpacity> 
+              )}
             </View>
           </TouchableOpacity>
         </View>
@@ -186,7 +193,10 @@ const styles = StyleSheet.create({
   },
   controlContainer: {
     flex: 1,
-    //padding: 5,
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingBottom: 20,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -194,13 +204,16 @@ const styles = StyleSheet.create({
   controlContent: {
     width: '100%',
     height: 37,
-    //borderRadius: 10,
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: 'transparent',
+    //backgroundColor: 'rgba(255,255,255,0.6)',
   },
   controlContent2: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderRadius: 20,
+    backgroundColor: '#514d4d',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
