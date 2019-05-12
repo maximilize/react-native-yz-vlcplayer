@@ -1556,6 +1556,7 @@ export default class VlCPlayerViewByMethod extends Component {
         {this.getChapterView()}
         <View style={[styles.bottomView,{}]}>
           <ControlBtn
+            {...this.props}
             showSlider={!isAd}
             muted={muted}
             isFull={isFull}
