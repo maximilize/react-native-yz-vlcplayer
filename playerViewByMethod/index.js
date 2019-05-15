@@ -1101,6 +1101,20 @@ export default class VlCPlayerViewByMethod extends Component {
 
   };
 
+  _onFullPress =() => {
+    const { isFull } = this.state;
+    if(this.props.onFullPress){
+      this.pause();
+      this.props.onFullPress(this.props.url);
+      return;
+    }
+    if(isFull){
+      this._onCloseFullScreen();
+    }else{
+      this._toFullScreen();
+    }
+  }
+  
   /**
    * 全屏
    * @private
@@ -1564,13 +1578,7 @@ export default class VlCPlayerViewByMethod extends Component {
             paused={paused}
             onReload={this.reloadCurrent}
             onPausedPress={this.pauseToggle}
-            onFullPress={()=>{
-              if(isFull){
-                this._onCloseFullScreen();
-              }else{
-                this._toFullScreen();
-              }
-            }}
+            onFullPress={()=> this._onFullPress()}
             currentTime={currentTime}
             totalTime={totalTime}
             onValueChange={value => {
