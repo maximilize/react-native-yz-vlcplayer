@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
   StatusBar,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from 'react-native-slider';
 import PropTypes from 'prop-types';
 import TimeLimt from './TimeLimit';
@@ -73,7 +73,7 @@ export default class ControlBtn extends Component {
                   onMutePress && onMutePress(!paused);
                 }}
                 style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
-                <Icon name={muted ? 'volume-off' : 'volume-high'} size={24} color="#fff" />
+                <Icon name={muted ? 'volume-off' : 'volume-up'} size={24} color="#fff" />
               </TouchableOpacity>
               <TouchableOpacity
                 activeOpacity={0.8}
@@ -81,7 +81,7 @@ export default class ControlBtn extends Component {
                   onPausedPress && onPausedPress(!paused);
                 }}
                 style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
-                <Icon name={paused ? 'play' : 'pause'} size={26} color="#fff" />
+                <Icon name={paused ? 'play-arrow' : 'pause'} size={26} color="#fff" />
               </TouchableOpacity>
               {showReload &&
                 (<TouchableOpacity
@@ -90,7 +90,7 @@ export default class ControlBtn extends Component {
                   onReload && onReload();
                 }}
                   style={{ width: 35, alignItems: 'center', justifyContent: 'center' }}>
-                  <Icon name={'reload'} size={24} color="#fff"/>
+                  <Icon name={'refresh'} size={24} color="#fff"/>
                 </TouchableOpacity>
               )}
               </View>
