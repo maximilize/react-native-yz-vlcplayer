@@ -21,7 +21,7 @@ import {
 
 import VLCPlayerView from './VLCPlayerView';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from 'react-native-slider';
 import ControlBtn from './ControlBtn';
 import TimeLimt from './TimeLimit';
@@ -1310,12 +1310,12 @@ export default class VlCPlayerViewByMethod extends Component {
           <Text style={styles.centerContainerText}>{endingText}</Text>
           <View style={styles.centerRowContainer}>
             <TouchableOpacity style={styles.centerContainerBtn} onPress={this.reload} activeOpacity={1}>
-              <Icon name={'reload'} size={20} color="#fff" />
+              <Icon name={'refresh'} size={20} color="#fff" />
               <Text style={styles.centerContainerBtnText}>{reloadBtnText}</Text>
             </TouchableOpacity>
             {!autoPlayNext &&
             hadNext && (<TouchableOpacity style={[styles.centerContainerBtn,{marginLeft:15}]} onPress={this._next} activeOpacity={1}>
-              <Icon name={'reload'} size={20} color="#fff" />
+              <Icon name={'refresh'} size={20} color="#fff" />
               <Text style={styles.centerContainerBtnText}>{nextBtnText}</Text>
             </TouchableOpacity>)
             }
@@ -1354,7 +1354,7 @@ export default class VlCPlayerViewByMethod extends Component {
         <View style={styles.centerContainer}>
           <Text style={styles.centerContainerText}>{errorText}</Text>
           <TouchableOpacity style={styles.centerContainerBtn} onPress={this.reloadError} activeOpacity={0.8}>
-            <Icon name={'reload'} size={20} color="#fff" />
+            <Icon name={'refresh'} size={20} color="#fff" />
             <Text style={styles.centerContainerBtnText}>{reloadBtnText}</Text>
           </TouchableOpacity>
         </View>
@@ -1383,7 +1383,7 @@ export default class VlCPlayerViewByMethod extends Component {
         <View style={styles.centerContainer}>
           <Text style={styles.centerContainerText}>网络未连接，请检查网络设置</Text>
           <TouchableOpacity style={styles.centerContainerBtn} onPress={this._fetchNetWork} activeOpacity={1}>
-            <Icon name={'reload'} size={20} color="#fff" />
+            <Icon name={'refresh'} size={20} color="#fff" />
             <Text style={styles.centerContainerBtnText}>刷新重试</Text>
           </TouchableOpacity>
         </View>
@@ -1420,10 +1420,10 @@ export default class VlCPlayerViewByMethod extends Component {
           />
         </View>
         <TouchableOpacity activeOpacity={1} onPress={this.pauseAdToggle} style={[styles.adBtn,{position:'absolute',left: 10, bottom: 10 }]}>
-          <Icon name={adPaused ? 'play' : 'pause'} size={24} color="#fff" />
+          <Icon name={adPaused ? 'play-arrow' : 'pause'} size={24} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={1} onPress={this.muteAdToggle} style={[styles.adBtn,{position:'absolute',left: 60, bottom: 10, }]}>
-          <Icon name={adMuted ? 'volume-off' : 'volume-high'} size={22} color="#fff" />
+          <Icon name={adMuted ? 'volume-off' : 'volume-up'} size={22} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={1} onPress={()=>{
           if(isFull){
@@ -1469,7 +1469,7 @@ export default class VlCPlayerViewByMethod extends Component {
     return (<View style={styles.commonView}>
       <TouchableOpacity activeOpacity={1} style={{flex:1,justifyContent:'center',alignItems:'center'}} onPressIn={this._onBodyPressIn} onPressOut={this._onBodyPress}>
         {showPaused  &&<TouchableOpacity activeOpacity={0.8} style={{paddingTop:2,paddingLeft:2,backgroundColor:'rgba(0,0,0,0.5)',justifyContent:'center',alignItems:'center',width:50,height:50,borderRadius:25}} onPress={this.play}>
-          <Icon name={'play'} size={30} color="#fff"/>
+          <Icon name={'play-arrow'} size={45} color="#fff"/>
         </TouchableOpacity>
         }
       </TouchableOpacity>
@@ -1523,7 +1523,7 @@ export default class VlCPlayerViewByMethod extends Component {
             this.changingSlider &&
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
               <View style={styles.changeSliderView}>
-                <Icon name={doFast ? 'fast-forward' : 'rewind'} size={30} color="#30a935" />
+                <Icon name={doFast ? 'fast-forward' : 'fast-rewind'} size={30} color="#30a935" />
                 <Text style={{ color: '#30a935', fontSize: 11.5 }}>
                   {getTime(currentTime)}
                   <Text style={{color:'#fff'}}>{ '/' + getTime(totalTime)}</Text>
