@@ -8,7 +8,6 @@ def _compileSdkVersion = _ext.has('compileSdkVersion') ? _ext.compileSdkVersion 
 def _buildToolsVersion = _ext.has('buildToolsVersion') ? _ext.buildToolsVersion : '28.0.3';
 def _minSdkVersion = _ext.has('minSdkVersion') ? _ext.minSdkVersion : 16;
 def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 28;
-def _supportLibVersion = _ext.has('supportLibVersion') ? _ext.supportLibVersion: '28.0.0'
 
 android {
     compileSdkVersion _compileSdkVersion
@@ -36,10 +35,6 @@ dependencies {
     provided fileTree(dir: 'libs', include: ['*.jar'])
     provided "com.facebook.react:react-native:${_reactNativeVersion}"
     compile 'com.yyl.vlc:vlc-android-sdk:3.0.13'
-    implementation "com.android.support:support-annotations:${_supportLibVersion}"
-    implementation "com.android.support:support-compat:${_supportLibVersion}"
-    implementation "com.android.support:support-core-utils:${_supportLibVersion}"
-    implementation "com.android.support:support-core-ui:${_supportLibVersion}"
-    implementation "com.android.support:support-fragment:${_supportLibVersion}"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     //compile 'de.mrmaffen:vlc-android-sdk:2.0.6'
 }
