@@ -1,4 +1,4 @@
-# react-native-yz-vlcplayer
+# react-native-vlc-video
 
 A `<VLCPlayer>` component for react-native
 This project refers to [react-native-video](https://github.com/react-native-community/react-native-video)，
