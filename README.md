@@ -1,11 +1,11 @@
-# react-native-yz-vlcplayer
+# react-native-vlc-video
 
 A `<VLCPlayer>` component for react-native
-Reference to this project[react-native-video](https://github.com/react-native-community/react-native-video)，
+This project refers to [react-native-video](https://github.com/react-native-community/react-native-video)，
 [react-native-vlcplayer](https://github.com/xiongchuan86/react-native-vlcplayer),
 [react-native-vlc-player](https://github.com/ghondar/react-native-vlc-player)
 
-VLCPlayer support for various formats (mp4,m3u8,flv,mov,rtsp,rtmp,etc.), see[vlc wiki](https://wiki.videolan.org/Documentation:Documentation/)
+VLCPlayer supports various formats (mp4,m3u8,flv,mov,rtsp,rtmp,etc.)，see [vlc wiki](https://wiki.videolan.org/Documentation:Documentation/)
 
 [https://code.videolan.org/videolan/VLCKit](https://code.videolan.org/videolan/VLCKit)
 
@@ -17,22 +17,22 @@ VLCPlayer support for various formats (mp4,m3u8,flv,mov,rtsp,rtmp,etc.), see[vlc
    ![](https://github.com/xuyuanzhou/resource/blob/master/gif/lizi.gif)
 
 
-## Xcode10+ Some of problems
+## Xcode10+ Known Issues
 
-（1）Libstdc++.6.0.9.tbd can't find in Xcode10,
-  Libstdc++.6.0.9.tbd was removed, and we removed it, OK.
+（1）libstdc++.6.0.9.tbd could not be found
+     In Xcode10, libstdc++.6.0.9.tbd has been removed, and we have removed it and it is OK.
 
-（2）Compile the case of the card death (at present can only wait for the official correction of this problem)
+（2）XCode Build-Process (currently only wait for the official to fix this problem)
 
    [https://forums.developer.apple.com/thread/107570](https://forums.developer.apple.com/thread/107570)
 
-   (1)Removal of DSYM
+   (1) Remove DSYM
 
-   Project  Build Settings  --> Build Options --> Debug Information Format set to DWARF.
+   Project Build Settings --> Build Options --> Debug Information Format is set to DWARF.
 
    ![](./images/dsym.png)
 
-   (2)Change to Xcode10 the following version to compile
+   (2) Compile to the following version of Xcode10
 
 
 
@@ -138,18 +138,17 @@ step 8:
 
 ```
 android:
-    this.vlcplayer.seek(100); //  unit  ms
+    this.vlcplayer.seek(100); //  unit(unit)  ms
 ios:
-    this.vlcplayer.seek(0.1); //  0 --- 1 Video Location Progress
+    this.vlcplayer.seek(0.1); //  0 --- 1  video location progress
 
 
-this.vlcPlayer.resume(autoplay) //Reload the video for playback, autopaly:true indicates that playing false indicates a pause
+this.vlcPlayer.resume(autoplay) //Reload the video for playback, autopaly: true means that playing false means pause
 
 this.vlcPlayer.play(bool)       // true: play the video   false: paused the video
 
 
-this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
-
+this.vlcPlayer.snapshot(path)  // path: string The path to the stored file.
 
 ```
 
@@ -168,17 +167,17 @@ this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
    | initOptions | array    |         |            |
    | mediaOptions| object   |         |            |
    | source      | object   | { uri: 'http:...' }| |
-   | autoplay    | bool     |       |  Whether to play automatically (default false) |
-   | onLoadStart | func     |       |  VLC video container initialization completed  |
-   | onOpen      | func     |       |  Video is turned on        |
-   | onBuffering | func     |       |  Buffering in progress     |
-   | onProgress  | func     | { currentTime:1000,duration:1000 }  unit：ms    |  Video Progress changes     |
-   | onEnd       | func     |       |  Video playback ends        |
-   | onPlaying   | func     |       |  Video is playing           |
-   | onPaused    | func     |       |  Video Pause                |
-   | onError     | func     |       |  Error playing video       |
-   | onStopped   | func     |       |  Video stops playing (live video please be judged by this) |
-   | onIsPlaying | func     | {isPlaying:true}   |  Whether the video is playing       |
+   | autoplay    | bool     |       |  Whether to play automatically (default false)        |
+   | onLoadStart | func     |       |  vlc video container initialization completed  |
+   | onOpen      | func     |       |  Video is opened            |
+   | onBuffering | func     |       |  Being buffered           |
+   | onProgress  | func     | { currentTime:1000,duration:1000 }  unit：ms    |  Video progress changes     |
+   | onEnd       | func     |       |  End of video playback        |
+   | onPlaying   | func     |       |  Video Now Playing        |
+   | onPaused    | func     |       |  Video pause           |
+   | onError     | func     |       |  Play video error       |
+   | onStopped   | func     |       |  Video stop playing (live video please judge according to this) |
+   | onIsPlaying | func     | {isPlaying:true}   |  Is the video playing?       |
 
 
    ```
@@ -230,19 +229,19 @@ this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
    ```
 
 
-## A brief description of the callback function (currently encountered)
+## Callback function simple description (currently encountered)
  ```
-                                                             支持平台
-           onEnd            Video playback ends                  ios       android
-           onBuffering      Buffering in progress                    ios       android
-           onError          Error playing video
-           onPlaying        Video playback                      ios       android
-           onPaused         Video Pause                      ios       android
-           onOpen           Video is turned on                              android
-           onLoadStart      VLC video container initialization completed          ios       android
-           onProgress       Video Progress changes               ios       android          SWF format does not support
+                                                             supported platform
+           onEnd            video playback ends                  ios       android
+           onBuffering      is buffering                    ios       android
+           onError          video error
+           onPlaying        playback                      ios       android
+           onPaused         paused                     ios       android
+           onOpen           video is opend                              android
+           onLoadStart      vlc video container initialization completed          ios       android
+           onProgress       video progress changes               ios       android          swf format is not supported
 
-           The order in which the callback function appears:  onLoadStart  ---> onOpen
+           The callback function appears in the order: onLoadStart  ---> onOpen
 
  ```
 
@@ -254,41 +253,41 @@ this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
 
    (1)
        android:
-           this.vlcplayer.seek(100); // Unit ms
+           this.vlcplayer.seek(100); // The unit in ms
        ios:
-           this.vlcplayer.seek(0.1); // 0 --- 1 Video Location Progress
+           this.vlcplayer.seek(0.1); // 0 --- 1 video location progress
   （2）
        <VLCPlayer
            ref={ref => (this.vlcPlayer = ref)}
            style={[styles.video]}
            /**
-            *  Increase the video aspect ratio and the video will stretch at this rate
-            *  Do not set by default scale
+            * increase the video aspect ratio, the video will stretch according to this ratio
+            * Do not set according to the default ratio
             */
            videoAspectRatio="16:9"
            /**
-            *  Whether to pause playback
+            * Whether to pause playback
             */
            paused={this.state.paused}
            /**
-            *  Resource Path
-            *  Local resources are not supported on a temporary
+            * Resource path
+            * Local resources are not supported at this time
             */
            source={{ uri: this.props.uri}}
            /**
-            *  Progress
-            *  Return {currentTime:1000,duration:1000}
-            *  Unit is ms
-            *  currentTime: Current time
-            *  duration:    Total time
+            * Progress
+            * Returns {currentTime:1000, duration:1000}
+            * Unit is ms
+            * currentTime: current time
+            * duration: total time
             */
            onProgress={this.onProgress.bind(this)}
            /**
-            *  Video playback ends
+            * End of video playback
             */
            onEnd={this.onEnded.bind(this)}
            /**
-            * is in the cache
+            * Being cached
             */
            onBuffering={this.onBuffering.bind(this)}
            /**
@@ -296,29 +295,28 @@ this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
             */
            onError={this._onError}
            /**
-            * Video Stop
+            * Error playing video
             */
            onStopped={this.onStopped.bind(this)}
            /**
-            * Video playback
+            * Video stops
             */
            onPlaying={this.onPlaying.bind(this)}
            /**
-            * Video Pause
+            * Video playback
             */
            onPaused={this.onPaused.bind(this)}
            /**
-            * Video is turned on
+            * Video pause
             /
            onOpen={this._onOpen}
            /**
-            * VLC video container initialization completed
+            * vlc video container is initialized
             * Set the progress of playback here, whether to start playing
             */
            onLoadStart={()=>{
                    if(Platform.OS === 'ios'){
-                       this.vlcPlayer.seek(0); //Set Playback Progress
-                   }else{
+                       this.vlcPlayer.seek(0); //Set the playback progress
                        this.vlcPlayer.seek(0); //Set the time of playback
                    }
                    this.setState({
@@ -333,21 +331,21 @@ this.vlcPlayer.snapshot(path)  // path: string  The path to the stored file.
 
 ````
 
-## Available sources
+## Available Sources
 
-Hong Kong Finance,rtmp://202.69.69.180:443/webcast/bshdlive-pc
+Hong Kong Finance, rtmp://202.69.69.180:443/webcast/bshdlive-pc
 
-Hunan Satellite TV,rtmp://58.200.131.2:1935/livetv/hunantv
+Hunan Satellite TV,,rtmp://58.200.131.2:1935/livetv/hunantv
 
 rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
 
 
-## Simple description of the version
+## Version Simple Description
 
 ````
     1.1.1-beta7:
-        (1) Increase  autoAspectRatio  bool  (only  on  Android)
-            Full Android Full Screen
+        (1) increase autoAspectRatio bool (only on Android)
+            Full Android full screen
 ````
 
 
@@ -380,56 +378,54 @@ rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
            Orientation={Orientation}
        />
 
-       Note:
-        《1》 The plug-in uses the aspect ratio (1.1.1-BETA1 and below) as shown below by default
+       note:
+        The《1》 plugin uses the aspect ratio (1.1.1-beta1 and below) as shown below by default.
             fullVideoAspectRatio: deviceHeight + ':' + deviceWidth,
             videoAspectRatio: deviceWidth + ':' + 211.5,
-            （1）If there is a problem with the picture scale in the case of vertical screen, please set your own aspect ratio or remove the built-in aspect ratio
-            （2）If the default height is modified in a non-full screen, set your own aspect ratio or remove the built-in aspect ratio
-                Remove built-in aspect ratio
+            (1) In the case of vertical screen, there will be problems with the aspect ratio. Please set the aspect ratio or remove the built-in aspect ratio.
+            (2) If the default height is modified in a non-full screen, please set the aspect ratio or remove the built-in aspect ratio.
+                Remove the built-in aspect ratio:
                             fullVideoAspectRatio={""}
-                            videoAspectRatio={""}
-        《2》 By default does not play automatically, need to play automatically please add the following parameters
+        《2》is not automatically played by default, you need to automatically play, please add the following parameters
              autoplay={true}
 
-        《3》 You can customize the following parameters :
+        《3》 You can customize the text with the following parameters:
                 endingViewText: {
-                    endingText: 'End of video program',
+                    endingText: 'End of video playback',
                     reloadBtnText: 'Replay',
-                    nextBtnText: 'Next'
+                    nextBtnText: 'next'
                 },
                 errorViewText: {
-                    errorText: 'Video playback Error',
+                    errorText: 'Video playback error',
                     reloadBtnText: 'Replay',
                 },
                 vipEndViewText: {
-                    vipEndText: 'End of the sample',
-                    boughtBtnText: 'Please watch and buy now after purchasing',
+                    vipEndText: 'Try to end',
+                    boughtBtnText: 'Please buy and buy now',
                 },
 
-      Here are some of the parameters that are available:
+       Here are some of the parameters available：
 
        static propTypes = {
 
         /**
-            * vlc Playback type related
+            * vlc play type related
             */
-               //Type of AD initialization
+               // Ad initialization type
                initAdType: PropTypes.oneOf([1,2]),
-               //AD Initialization Parameters
+               // Advertising initialization parameters
                initAdOptions: PropTypes.array,
 
-               //Video initialization type
+               // Video initialization type
                initType: PropTypes.oneOf([1,2]),
-               //Video Initialization parameters
+               // Video initialization parameters
                initOptions: PropTypes.array,
 
            /**
-            * Live related
+            * Live broadcast related
             */
-                //Is it live?
                 isLive: PropTypes.bool,
-                //Whether to automatically reload  live
+                //Whether it automatically reload live
                 autoReloadLive: PropTypes.bool,
 
            /**
@@ -437,76 +433,76 @@ rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
             */
                //Whether to display ads
                showAd:  PropTypes.bool,
-               //Advertising
+               //Ad-url
                adUrl: PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
-               //Reload includes ads
+               //Reload including ads
                reloadWithAd: PropTypes.bool,
-               //End of AD header playback
+               //End of the ad title
                onAdEnd: PropTypes.func,
-               //Whether the ad is playing
+               //Is the ad playing?
                onIsAdPlaying: PropTypes.func,
 
 
            /**
             * Screen related
             */
-           // Initialize with full screen
+           // initialized in full screen
            initWithFull: PropTypes.bool,
-           //Turn on the full screen callback function
+           // Turn on the full screen callback function
            onStartFullScreen: PropTypes.func,
-           //Turn off the full-screen callback function
+           // Turn off the full screen callback function
            onCloseFullScreen: PropTypes.func,
 
            /**
             * Video related
             */
 
-               //Video Path：
-                    //string:  Local or network resource path
-                    //number:  require('./resource/1.mp4')
+               //Video path:
+                    //string: local or network resource path
+                    //number: require('./resource/1.mp4')
                url: PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
-               //Video playback ends
+               // Video playback ends
                onEnd: PropTypes.func,
-               //Whether to play the
+               // Is it playing?
                onIsPlaying: PropTypes.func,
-               //Time already viewed
+               // Already watched the time
                lookTime: PropTypes.number,
-               //Total time
+               // total time
                totalTime: PropTypes.number,
-               //Is there a next video source
+               // Is there a next video source?
                hadNext: PropTypes.bool,
-               //Automatically play the next video
+               // Automatically play the next video
                autoPlayNext: PropTypes.bool,
-               //Auto Repeat Playback
+               // Automatic repeat play
                autoRePlay: PropTypes.bool,
 
 
            /**
             * Style related
             */
-               //Video Style
+               // Video style
                style: PropTypes.object,
-               //Full Screen video styles
+               // full screen video style
                fullStyle: PropTypes.object,
-               //Do you need to consider StatusBar   only for ios
+               // Do you need to consider statusBar only for ios
                considerStatusBar: PropTypes.bool,
-               //Whether to display the top
+               // Do you show the top?
                showTop: PropTypes.bool,
-               //Title
+               // title
                title: PropTypes.string,
-               //Whether to display the title
+               // Whether to display the title
                showTitle: PropTypes.bool,
-               //Whether to display the return button
+               // Whether to display the return button
                showBack: PropTypes.bool,
-               //Back button click event
+               // Back button click event
                onLeftPress: PropTypes.func,
 
            /**
-            * VIP related
+            * vip related
             */
-               //Whether to use VIP
+               // Whether to use vip
                useVip: PropTypes.bool,
-               //on-VIP viewing length
+               // Non-vip viewing length
                vipPlayLength: PropTypes.number,
 
          };
