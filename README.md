@@ -10,6 +10,12 @@ VLCPlayer supports various formats (mp4,m3u8,flv,mov,rtsp,rtmp,etc.)，see [vlc 
 [https://code.videolan.org/videolan/VLCKit](https://code.videolan.org/videolan/VLCKit)
 
 
+## About this fork
+
+It seems that the [original repo](https://github.com/xuyuanzhou/react-native-yz-vlcplayer) is not really maintained anymore. For example, there are build issues with AndroidX.
+
+I merged some changes from other forks which solves this issue, as well as some other issues.
+
 ## Example project
 
    [https://github.com/xuyuanzhou/vlcplayerExample](https://github.com/xuyuanzhou/vlcplayerExample)
@@ -39,7 +45,7 @@ VLCPlayer supports various formats (mp4,m3u8,flv,mov,rtsp,rtmp,etc.)，see [vlc 
 
 ###  install
 
-     `npm install react-native-yz-vlcplayer --save`
+     `npm install maximilize/react-native-yz-vlcplayer --save`
 
 
 ## android setup
